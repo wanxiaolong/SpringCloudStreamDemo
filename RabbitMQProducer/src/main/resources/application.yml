@@ -1,0 +1,22 @@
+server:
+  port: 8000
+spring:
+  application:
+    name: cloud-stream-rabbitmq-producer
+  cloud:
+    stream:
+      bindings:
+        output:                          #这是一个自定义的通道名字
+          destination: myExchange        #要使用的exchange的名字
+          content-type: application/json #消息类型，文本则是text/plain
+          binder: defaultRabbit          #要绑定的具体的binder
+      binders:                           #binder的具体定义
+        defaultRabbit:                   #定义了一个叫myBinder的binder
+          type: rabbit                   #binder的类型
+          environment:                   #设置rabbitmq的具体环境
+            spring:
+              rabbitmq:
+                host: localhost
+                port: 5672
+                username: guest
+                password: guest
