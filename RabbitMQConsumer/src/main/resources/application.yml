@@ -6,7 +6,7 @@ spring:
   cloud:
     stream:
       bindings:
-        input:                           #这是一个自定义的通道名字
+        myInput:                         #这是一个自定义的通道名字
           destination: myExchange        #要使用的exchange的名字
           content-type: application/json #消息类型，文本则是text/plain
           binder: defaultRabbit          #要绑定的具体的binder
